@@ -8,18 +8,14 @@ import {
   handleFieldInput,
 } from '../helpers/validation';
 
-import { TextField } from '../components/TextField';
+import { TextFieldJavascript } from '../components/TextFieldJavascript';
 
-export default function Home() {
+export default function FormJavascript() {
   const [visitedFields, setVisitedFields] = useState([]);
-  const formRef = useRef();
 
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      formRef.current.setAttribute('noValidate', true);
-      formRef.current.addEventListener('submit', validateForm);
-    }
-  }, []);
+  function changeHandler(e) {
+    return handleFieldInput(e, visitedFields);
+  }
 
   return (
     <div className="container">
@@ -30,11 +26,11 @@ export default function Home() {
       </Head>
 
       <main className="main">
-        <form ref={formRef}>
+        <form onSubmit={validateForm}>
           <fieldset>
             <legend>Contact Info</legend>
 
-            <TextField
+            <TextFieldJavascript
               label="First Name"
               id="first_name"
               name="user_first_name"
@@ -51,7 +47,7 @@ export default function Home() {
               required
             />
 
-            <TextField
+            <TextFieldJavascript
               label="Last Name"
               id="last_name"
               name="user_last_name"
@@ -64,11 +60,11 @@ export default function Home() {
               onBlur={(e) =>
                 handleFieldBlur(e, visitedFields, setVisitedFields)
               }
-              onChange={(e) => handleFieldInput(e, visitedFields)}
+              onChange={changeHandler}
               required
             />
 
-            <TextField
+            <TextFieldJavascript
               label="Work Email"
               id="email"
               name="user_work_email"
@@ -81,12 +77,12 @@ export default function Home() {
               onBlur={(e) =>
                 handleFieldBlur(e, visitedFields, setVisitedFields)
               }
-              onChange={(e) => handleFieldInput(e, visitedFields)}
+              onChange={changeHandler}
               required
             />
           </fieldset>
 
-          <TextField
+          <TextFieldJavascript
             label="Message"
             id="msg"
             name="user_message"

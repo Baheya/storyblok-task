@@ -1,3 +1,10 @@
+:root {
+  --purple-100: hsl(291, 27%, 38%);
+  --purple-200: hsl(291, 27%, 48%);
+  --purple-300: hsl(273, 38%, 94%);
+  --grey-100: grey;
+}
+
 html,
 body {
   padding: 0;
@@ -13,4 +20,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.span-cols {
+  grid-column: 1 / -1;
 }
