@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build && npm run build:functions",
     "build:functions": "netlify-lambda build functions",
-    "start": "cross-env NODE_ENV=dev npm-run-all --parallel start:**",
-    "start:app": "PORT=3000 node server.js",
-    "start:functions": "netlify-lambda serve functions",
+    "start": "netlify dev",
     "lint": "next lint"
   },
   "dependencies": {

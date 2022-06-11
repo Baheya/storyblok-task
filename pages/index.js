@@ -14,12 +14,12 @@ export default function Home() {
   const [visitedFields, setVisitedFields] = useState([]);
   const formRef = useRef();
 
-  // useEffect(() => {
-  //   if (typeof window !== undefined) {
-  //     formRef.current.setAttribute('noValidate', true);
-  //     formRef.current.addEventListener('submit', validateForm);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      formRef.current.setAttribute('noValidate', true);
+      formRef.current.addEventListener('submit', validateForm);
+    }
+  }, []);
 
   return (
     <div className="container">

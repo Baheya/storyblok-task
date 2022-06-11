@@ -1,17 +1,17 @@
+import Router from 'next/router';
+
 export async function validateForm(e) {
   const form = e.target;
 
   if (form.reportValidity()) {
     e.preventDefault();
 
-    console.log(form.method);
-
     const resource = new URL(form.action || window.location.href);
     const formData = new FormData(form);
 
     const options = {
       method: form.method || 'get',
-      mode: 'cors', // Needed for the demo to work
+      // mode: 'cors', // Needed for the demo to work
       headers: {
         Accept: 'application/json',
       },
@@ -38,7 +38,9 @@ export async function validateForm(e) {
     }
 
     const json = await r.json();
-    console.log('yayyyyyy');
+    if (json.data) {
+      Router.push('/thanks');
+    }
 
     // document.querySelector('output').innerHTML = `✅ ${JSON.stringify(json)}`;
   } else {
