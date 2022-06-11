@@ -4,20 +4,43 @@ export async function validateForm(e) {
   if (form.reportValidity()) {
     e.preventDefault();
 
-    const resource = form.action;
+    console.log(form.method);
+
+    const resource = new URL(form.action || window.location.href);
+    const formData = new FormData(form);
+
     const options = {
-      method: form.method,
-      body: new FormData(form), // 👈 Magic!
+      method: form.method || 'get',
+      mode: 'cors', // Needed for the demo to work
+      headers: {
+        Accept: 'application/json',
+      },
     };
+
+    if (options.method === 'get') {
+      resource.search = new URLSearchParams(formData);
+    } else {
+      if (form.enctype === 'multipart/form-data') {
+        options.body = formData;
+      } else {
+        options.body = JSON.stringify(Object.fromEntries(formData));
+        options.headers['Content-Type'] = 'application/json';
+      }
+    }
 
     const r = await fetch(resource, options);
 
     if (!r.ok) {
-      // @TODO: Show an error message
+      // document.querySelector('output').innerHTML =
+      //   '❌ Fetch request returned a non-OK status';
+      console.log('oh noooooo');
       return;
     }
 
-    console.log('hiiii');
+    const json = await r.json();
+    console.log('yayyyyyy');
+
+    // document.querySelector('output').innerHTML = `✅ ${JSON.stringify(json)}`;
   } else {
     // form is invalid - cancel submit
     e.preventDefault();
