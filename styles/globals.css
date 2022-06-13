@@ -17,6 +17,11 @@ a {
   color: var(--purple-100);
 }
 
+a:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px rgba(115, 0, 255, 0.3);
+}
+
 * {
   box-sizing: border-box;
 }
