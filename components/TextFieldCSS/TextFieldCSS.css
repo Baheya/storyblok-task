@@ -78,8 +78,3 @@
 .text-field .text-field__input:not(:focus):not(:placeholder-shown):invalid {
     border: 1px solid red;
 }
-
-.text-field .text-field__input:not(:placeholder-shown):invalid~.text-field__error-message {
-    visibility: visible;
-
-}
