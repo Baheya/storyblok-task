@@ -47,7 +47,7 @@ export default function FormCSS() {
               placeholder="Work Email*"
               type="email"
               error="Please enter a valid e-mail address."
-              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+              pattern="[a-z0-9.\-_]+@[a-z]+\.[a-z]{2,3}"
               required
             />
           </fieldset>

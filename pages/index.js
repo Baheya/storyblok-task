@@ -87,7 +87,7 @@ export default function Home() {
                 handleFieldBlur(e, visitedFields, setVisitedFields)
               }
               onChange={(e) => handleFieldInput(e, visitedFields)}
-              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+              pattern="[a-z0-9.\-_]+@[a-z]+\.[a-z]{2,3}"
               required
             />
           </fieldset>

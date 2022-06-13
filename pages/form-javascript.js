@@ -82,7 +82,7 @@ export default function FormJavascript() {
                 handleFieldBlur(e, visitedFields, setVisitedFields)
               }
               onChange={changeHandler}
-              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+              pattern="[a-z0-9.\-_]+@[a-z]+\.[a-z]{2,3}"
               required
             />
           </fieldset>
