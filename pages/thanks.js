@@ -1,6 +1,13 @@
 import Head from 'next/head';
+import Confetti from 'react-confetti';
+
+import { ClientOnly } from '../components/ClientOnly';
+
+import { useWindowSize } from '../helpers/useWindowSize';
 
 export default function Thanks() {
+  const size = useWindowSize();
+
   return (
     <div className="container">
       <Head>
@@ -11,6 +18,9 @@ export default function Thanks() {
 
       <main className="main">
         <h1>Thanks!</h1>
+        <ClientOnly>
+          <Confetti width={size.width} height={size.height} />
+        </ClientOnly>
       </main>
     </div>
   );

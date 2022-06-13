@@ -11,7 +11,6 @@ export async function validateForm(e) {
 
     const options = {
       method: form.method || 'get',
-      // mode: 'cors', // Needed for the demo to work
       headers: {
         Accept: 'application/json',
       },
@@ -31,9 +30,7 @@ export async function validateForm(e) {
     const r = await fetch(resource, options);
 
     if (!r.ok) {
-      // document.querySelector('output').innerHTML =
-      //   '❌ Fetch request returned a non-OK status';
-      console.log('oh noooooo');
+      Router.push('/error');
       return;
     }
 
@@ -41,18 +38,16 @@ export async function validateForm(e) {
     if (json.data) {
       Router.push('/thanks');
     }
-
-    // document.querySelector('output').innerHTML = `✅ ${JSON.stringify(json)}`;
   } else {
-    // form is invalid - cancel submit
     e.preventDefault();
   }
 }
 
 export function handleInvalidField(event) {
+  event.preventDefault();
+
   const field = event.target;
   setFieldValidity(field);
-  event.preventDefault();
 }
 
 export function handleFieldBlur(event, visitedFields, setVisitedFields) {
@@ -61,15 +56,16 @@ export function handleFieldBlur(event, visitedFields, setVisitedFields) {
   if (!visitedFields.includes(field)) {
     setVisitedFields([...visitedFields, field]);
   }
+
   field.reportValidity();
 }
 
 export function handleFieldInput(event, visitedFields) {
   const field = event.target;
-  //   console.log(field.getAttribute('aria-invalid') === 'true');
-  console.log(field);
+
   if (!visitedFields.includes(field) && !field.getAttribute('aria-invalid'))
     return;
+
   setFieldValidity(field);
 }
 

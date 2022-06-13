@@ -72,4 +72,10 @@ fieldset>div:nth-of-type(3) {
 
 .contact-form__button:hover {
   background-color: var(--purple-200);
+  box-shadow: 0 0 0 3px rgba(115, 0, 255, 0.5);
+}
+
+.contact-form__button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(115, 0, 255, 0.5);
 }

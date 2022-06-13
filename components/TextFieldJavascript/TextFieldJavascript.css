@@ -1,17 +1,19 @@
-.tjf.text-field__wrapper {
-    border-radius: 5px;
-}
-
-.tfj.text-field {
-    /* border: 1px solid transparent; */
+.text-field {
     position: relative;
-    /* background-color: #fff;
-    border-radius: 5px; */
+    border-radius: 5px;
 }
 
 .tfj.text-field .text-field__label {
     color: grey;
     font-size: 12.5px;
+}
+
+.tfj.text-field--default .text-field__label {
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    margin-block-end: 1rem;
+    display: block;
 }
 
 .tfj.text-field--inline .text-field__label {
@@ -26,11 +28,10 @@
 
 .tfj.text-field__input {
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: inherit;
     border: 1px solid transparent;
     z-index: 2;
     width: 100%;
-    /* background: transparent; */
     transition: all .3s linear;
     padding: 20px 10px;
     font-size: 14px;
@@ -46,11 +47,7 @@
     opacity: .7;
 }
 
-.tjf.text-field__asterisk {
-    text-decoration: none;
-}
-
-.error-message {
+.text-field__error-message {
     visibility: hidden;
     display: inline;
     font-weight: bold;

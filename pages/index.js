@@ -86,6 +86,7 @@ export default function Home() {
                 handleFieldBlur(e, visitedFields, setVisitedFields)
               }
               onChange={(e) => handleFieldInput(e, visitedFields)}
+              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
               required
             />
           </fieldset>
@@ -105,7 +106,7 @@ export default function Home() {
             required
           />
 
-          <small className="span-cols">
+          <small>
             For information about our privacy practices and commitment to
             protecting your privacy, please review our Privacy Policy.
           </small>

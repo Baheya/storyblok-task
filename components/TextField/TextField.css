@@ -1,15 +1,19 @@
-.text-field__wrapper {
-    border-radius: 5px;
-}
-
 .text-field {
     position: relative;
-    border-radius: inherit;
+    border-radius: 5px;
 }
 
 .text-field .text-field__label {
     color: grey;
     font-size: 12.5px;
+}
+
+.text-field--default .text-field__label {
+    color: #000;
+    font-size: 18px;
+    font-weight: 500;
+    margin-block-end: 1rem;
+    display: block;
 }
 
 .text-field--inline .text-field__label {
@@ -38,18 +42,12 @@
 }
 
 .text-field--inline .text-field__input:not(:placeholder-shown)+.text-field__label {
-    transform: translateY(-12px);
+    transform: translateY(-22px);
     z-index: 1;
     opacity: .7;
 }
 
-
-
-.text-field__asterisk {
-    text-decoration: none;
-}
-
-.error-message {
+.text-field__error-message {
     visibility: hidden;
     display: inline;
     font-weight: bold;
@@ -62,7 +60,7 @@
     outline: none;
 }
 
-.text-field .text-field__input:focus-visible {
+.text-field .text-field__input:focus {
     border: 1px solid var(--purple-200);
 }
 
@@ -70,7 +68,7 @@
     border: 1px solid red;
 }
 
-.text-field .text-field__input:not(:focus):not(:placeholder-shown):invalid~.error-message {
+.text-field .text-field__input:not(:focus):not(:placeholder-shown):invalid~.text-field__error-message {
     visibility: visible;
 
 }

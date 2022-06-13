@@ -6,6 +6,7 @@ export function TextFieldCSS({
   id,
   required,
   error,
+  pattern,
 }) {
   const STYLES = {
     text: 'tfc text-field text-field--inline',
@@ -18,19 +19,20 @@ export function TextFieldCSS({
   }
 
   return (
-    <div className="tfc text-field__wrapper">
-      <div className={STYLES[type]}>
-        <label className="tfc text-field__label" htmlFor={id}>
-          {label}
-          <abbr
-            className="text-field__asterisk"
-            title="required"
-            aria-label="required"
-          >
-            *
-          </abbr>
-        </label>
-        {type === 'textarea' ? (
+    <>
+      {type === 'textarea' ? (
+        <div className={STYLES[type]}>
+          <label className="tfc text-field__label" htmlFor={id}>
+            {label}
+            <abbr
+              className="tfc text-field__asterisk"
+              title="required"
+              aria-label="required"
+            >
+              *
+            </abbr>
+          </label>
+
           <textarea
             className="tfc text-field__input"
             type={type}
@@ -40,7 +42,13 @@ export function TextFieldCSS({
             required={required}
             aria-describedby={`${name}-error`}
           ></textarea>
-        ) : (
+
+          <p id={`${name}-error`} className="text-field__error-message">
+            {error}
+          </p>
+        </div>
+      ) : (
+        <div className={STYLES[type]}>
           <input
             className="tfc text-field__input"
             type={type}
@@ -49,12 +57,23 @@ export function TextFieldCSS({
             placeholder={placeholder}
             required={required}
             aria-describedby={`${name}-error`}
+            pattern={pattern}
           />
-        )}
-      </div>
-      <p id={`${name}-error`} className="error-message">
-        {error}
-      </p>
-    </div>
+          <label className="tfc text-field__label" htmlFor={id}>
+            {label}
+            <abbr
+              className="tfc text-field__asterisk"
+              title="required"
+              aria-label="required"
+            >
+              *
+            </abbr>
+          </label>
+          <p id={`${name}-error`} className="text-field__error-message">
+            {error}
+          </p>
+        </div>
+      )}
+    </>
   );
 }

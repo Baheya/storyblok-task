@@ -12,7 +12,7 @@ export default function FormCSS() {
       </Head>
 
       <main className="main">
-        <form>
+        <form method="post" action="/.netlify/functions/form-handler">
           <fieldset>
             <legend>Contact Info</legend>
 
@@ -41,8 +41,9 @@ export default function FormCSS() {
               id="email"
               name="user_work_email"
               placeholder="Work Email*"
-              type="text"
+              type="email"
               error="Please enter a valid e-mail address."
+              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
               required
             />
           </fieldset>
@@ -62,7 +63,9 @@ export default function FormCSS() {
             protecting your privacy, please review our Privacy Policy.
           </small>
 
-          <button type="submit">Send Message</button>
+          <button className="contact-form__button" type="submit">
+            Send Message
+          </button>
         </form>
       </main>
     </div>

@@ -25,3 +25,23 @@ a {
 .span-cols {
   grid-column: 1 / -1;
 }
+
+h1 {
+  font-size: 8rem;
+  margin: 0;
+  text-align: center;
+}
+
+.illustration-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.illustration-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+.text-field__asterisk {
+  text-decoration: none;
+}

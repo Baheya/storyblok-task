@@ -11,12 +11,13 @@ export function TextFieldJavascript({
   id,
   required,
   error,
+  pattern,
 }) {
   const [isLabelFloating, setIsLabelFloating] = useState(false);
 
   const STYLES = {
     text: 'tfj text-field text-field--inline',
-    email: 'text-field text-field--inline',
+    email: 'tfj text-field text-field--inline',
     textarea: 'tfj text-field text-field--default',
   };
 
@@ -35,7 +36,7 @@ export function TextFieldJavascript({
   return (
     <>
       {type === 'textarea' ? (
-        <div className="tjf text-field__wrapper">
+        <div className={STYLES[type]}>
           <label className={'tfj text-field__label'} htmlFor={id}>
             {label}
             <abbr
@@ -46,24 +47,24 @@ export function TextFieldJavascript({
               *
             </abbr>
           </label>
-          <div className={STYLES[type]}>
-            <textarea
-              className="tfj text-field__input"
-              type={type}
-              name={name}
-              id={id}
-              placeholder={placeholder}
-              required={required}
-              aria-describedby={`${name}-error`}
-              onBlur={onBlur}
-              onInvalid={onInvalid}
-              onChange={(e) => {
-                handleFloatingLabel(e);
-                onChange(e);
-              }}
-            ></textarea>
-          </div>
-          <p id={`${name}-error`} className="error-message">
+
+          <textarea
+            className="tfj text-field__input"
+            type={type}
+            name={name}
+            id={id}
+            placeholder={placeholder}
+            required={required}
+            aria-describedby={`${name}-error`}
+            onBlur={onBlur}
+            onInvalid={onInvalid}
+            onChange={(e) => {
+              handleFloatingLabel(e);
+              onChange(e);
+            }}
+          ></textarea>
+
+          <p id={`${name}-error`} className="text-field__error-message">
             {error}
           </p>
         </div>
@@ -101,8 +102,10 @@ export function TextFieldJavascript({
               handleFloatingLabel(e);
               onChange(e);
             }}
+            pattern={pattern}
           />
-          <p id={`${name}-error`} className="error-message">
+
+          <p id={`${name}-error`} className="text-field__error-message">
             {error}
           </p>
         </div>

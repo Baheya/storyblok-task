@@ -9,6 +9,7 @@ export function TextField({
   id,
   required,
   error,
+  pattern,
 }) {
   const STYLES = {
     text: 'text-field text-field--inline',
@@ -23,7 +24,7 @@ export function TextField({
   return (
     <>
       {type === 'textarea' ? (
-        <div className="text-field__wrapper">
+        <div className={STYLES[type]}>
           <label className="text-field__label" htmlFor={id}>
             {label}
             <abbr
@@ -34,51 +35,49 @@ export function TextField({
               *
             </abbr>
           </label>
-          <div className={STYLES[type]}>
-            <textarea
-              className="text-field__input"
-              type={type}
-              name={name}
-              id={id}
-              placeholder={placeholder}
-              required={required}
-              aria-describedby={`${name}-error`}
-              onBlur={onBlur}
-              onInvalid={onInvalid}
-              onChange={onChange}
-            ></textarea>
-          </div>
-          <p id={`${name}-error`} className="error-message">
+          <textarea
+            className="text-field__input"
+            type={type}
+            name={name}
+            id={id}
+            placeholder={placeholder}
+            required={required}
+            aria-describedby={`${name}-error`}
+            onBlur={onBlur}
+            onInvalid={onInvalid}
+            onChange={onChange}
+          ></textarea>
+          <p id={`${name}-error`} className="text-field__error-message">
             {error}
           </p>
         </div>
       ) : (
-        <div className="text-field__wrapper">
-          <div className={STYLES[type]}>
-            <input
-              className="text-field__input"
-              type={type}
-              name={name}
-              id={id}
-              placeholder={placeholder}
-              required={required}
-              aria-describedby={`${name}-error`}
-              onBlur={onBlur}
-              onInvalid={onInvalid}
-              onChange={onChange}
-            />
-            <label className="text-field__label" htmlFor={id}>
-              {label}
-              <abbr
-                className="text-field__asterisk"
-                title="required"
-                aria-label="required"
-              >
-                *
-              </abbr>
-            </label>
-          </div>
-          <p id={`${name}-error`} className="error-message">
+        <div className={STYLES[type]}>
+          <input
+            className="text-field__input"
+            type={type}
+            name={name}
+            id={id}
+            placeholder={placeholder}
+            required={required}
+            aria-describedby={`${name}-error`}
+            onBlur={onBlur}
+            onInvalid={onInvalid}
+            onChange={onChange}
+            pattern={pattern}
+          />
+
+          <label className="text-field__label" htmlFor={id}>
+            {label}
+            <abbr
+              className="text-field__asterisk"
+              title="required"
+              aria-label="required"
+            >
+              *
+            </abbr>
+          </label>
+          <p id={`${name}-error`} className="text-field__error-message">
             {error}
           </p>
         </div>
