@@ -37,7 +37,7 @@ a {
 
 .main form {
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   padding: 2rem;
   background-color: var(--purple-300);
   border-radius: 15px;
@@ -86,8 +86,9 @@ fieldset>div:nth-of-type(3) {
   color: var(--purple-300);
   border: none;
   min-height: 44px;
+  font-size: 1rem;
   align-self: flex-start;
-  padding: 0.25em 1em;
+  padding: 1em 1.6em;
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
@@ -95,7 +96,6 @@ fieldset>div:nth-of-type(3) {
 
 .contact-form__button:hover {
   background-color: var(--purple-200);
-  box-shadow: 0 0 0 3px rgba(115, 0, 255, 0.5);
 }
 
 .contact-form__button:focus {

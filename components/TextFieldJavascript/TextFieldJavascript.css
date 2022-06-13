@@ -5,12 +5,12 @@
 
 .tfj.text-field .text-field__label {
     color: grey;
-    font-size: 12.5px;
+    font-size: 0.8rem;
 }
 
 .tfj.text-field--default .text-field__label {
     color: #000;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
     margin-block-end: 1rem;
     display: block;
@@ -34,7 +34,8 @@
     width: 100%;
     transition: all .3s linear;
     padding: 20px 10px;
-    font-size: 14px;
+    font-size: 0.875rem;
+    font-family: unset;
 }
 
 .tfj.text-field--inline .text-field__input:not(:placeholder-shown) {
@@ -44,7 +45,13 @@
 .tfj.text-field__label.text-field__label--float {
     transform: translateY(-22px);
     z-index: 1;
-    opacity: .7;
+    opacity: 1;
+}
+
+@media (min-width: 495px) {
+    .tfj.text-field__label.text-field__label--float {
+        transform: translateY(-24px);
+    }
 }
 
 .text-field__error-message {
@@ -53,15 +60,16 @@
     font-weight: bold;
     color: red;
     transition: all .3s linear;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .text-field .text-field__input:focus {
     outline: none;
 }
 
-.text-field .text-field__input:focus-visible {
-    border: 1px solid #73467B;
+.text-field .text-field__input:focus {
+    border: 1px solid var(--purple-200);
+    box-shadow: 0 0 0 1px rgba(115, 0, 255, 0.2);
 }
 
 .text-field .text-field__input:not(:focus):not(:placeholder-shown):invalid {

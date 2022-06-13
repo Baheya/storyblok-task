@@ -5,12 +5,12 @@
 
 .tfc.text-field .text-field__label {
     color: grey;
-    font-size: 12.5px;
+    font-size: 0.8rem;
 }
 
 .tfc.text-field--default .text-field__label {
     color: #000;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
     margin-block-end: 1rem;
     display: block;
@@ -23,9 +23,10 @@
     width: 100%;
     transition: all .3s linear;
     padding: 20px 10px;
-    font-size: 14px;
+    font-size: 0.875rem;
     background-color: #fff;
     border-radius: inherit;
+    font-family: unset;
 }
 
 .tfc.text-field--inline .text-field__input:not(:placeholder-shown) {
@@ -35,7 +36,13 @@
 .tfc.text-field--inline .text-field__input:not(:placeholder-shown)~.text-field__label {
     transform: translateY(-20px);
     z-index: 1;
-    opacity: .7;
+    opacity: 1;
+}
+
+@media (min-width: 495px) {
+    .tf.text-field--inline .text-field__input:not(:placeholder-shown)~.text-field__label {
+        transform: translateY(-24px);
+    }
 }
 
 .tfc.text-field--inline .text-field__label {
@@ -54,7 +61,7 @@
     font-weight: bold;
     color: red;
     transition: all .3s linear;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .tfc.text-field .text-field__input:focus {
@@ -63,6 +70,7 @@
 
 .tfc.text-field .text-field__input:focus {
     border: 1px solid var(--purple-200);
+    box-shadow: 0 0 0 1px rgba(115, 0, 255, 0.2);
 }
 
 /* validation event is dispatched on form submission, so this selector won't work on blur for fields who have required as their only constraint - will work for pattern mismatch like e-mail input */
